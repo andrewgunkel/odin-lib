@@ -24,6 +24,11 @@ a {
     --color-primary: var(--palette-accent);
 }
 
+.btn {
+	cursor: pointer;
+	border: none;
+
+}
 
 body {
 			margin: 0;
@@ -42,16 +47,33 @@ body {
 
 }
 
+#modal {
+    position: fixed;
+    inset: 0; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+		
+	background: rgba(54, 25, 25, .5);
+}
+
+#modal.is-hidden {
+    display: none;
+
+}
+
 #add-book-form {
         		background-color: #fff;
+				width: 500px;
+
 			border: 1px solid #ccc;
-           position:fixed; 
-  top: calc(50% - 25px); 
-  left: calc(50% - 50px); 
+        
+
 			border-radius: 8px;
 			padding: 10px;
 			padding-left: 20px;
 			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
 }
 
 .book-card {

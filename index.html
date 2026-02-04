@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
     <!--<link rel="icon" type="image/svg+xml" href="images/favicon.svg"> -->
     <title>My Library</title>
 </head>
@@ -16,11 +17,15 @@
 
     <div id="library"></div>
 
-    
 
+    <div id="modal">
 
 <div id="add-book-form">
     <h1>Add New Book</h1>  
+    <button id="close-form" class="btn" type="button">
+  <span class="material-symbols-outlined">close</span>
+</button>
+
         <form id="new-book-form">
 					<div class="form-group">
 						<label for="book-title">Title </label>
@@ -43,11 +48,13 @@
                         <label for="book-toberead">To read</label>
 						<input type="radio" name="book-status" value="To read">
 					</div>
-                    <button type="submit">Add book</button>
+                    <button type="submit" class="btn">Add book</button>
     </form>
+
+    </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
 
-</div>
 </html>
