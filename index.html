@@ -13,14 +13,14 @@
 
     <h1>My Library</h1>
 
-    <button class="btn" id ="btn-add-book">Add New Book</button>
+    <button class="btn" id ="btn-add-book" class="btn-add-book"><span class="material-symbols-outlined">add</span>Add New Book</button>
 
     <div id="library"></div>
 
 
     <div id="modal">
 
-<div id="add-book-form">
+<div id="add-book-form" class="card" >
     <h1>Add New Book</h1>  
     <button id="close-form" class="btn" type="button">
   <span class="material-symbols-outlined">close</span>
@@ -48,7 +48,7 @@
                         <label for="book-toberead">To read</label>
 						<input type="radio" name="book-status" value="To read">
 					</div>
-                    <button type="submit" class="btn">Add book</button>
+                    <button type="submit" class="btn btn-add-book"><span class="material-symbols-outlined">add</span> Add book</button>
     </form>
 
     </div>

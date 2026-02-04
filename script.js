@@ -70,7 +70,7 @@ const book = myLibrary[i];
 
 const bookCard = document.createElement("div");
 
-bookCard.classList.add("book-card");
+bookCard.classList.add("book-card", "card");
 
 const bookTitle = document.createElement("h1");
 const bookAuthor = document.createElement("h2");

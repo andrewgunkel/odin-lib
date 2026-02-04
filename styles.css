@@ -12,12 +12,15 @@ a {
 
 :root {
     /* Palette */
-    --palette-light: ;
-    --palette-dark: ;
-    --palette-accent: ;
+    --palette-light: #6900fd;
+    --palette-dark: #3700b3;
+    --palette-accent: #03dac6;
+	--palette-black: #000000;	
+	--palette-white: #e2d2fa;
 }
 
 :root {
+
     /* Semantic roles */
     --color-background: var(--palette-light);
     --color-text: var(--palette-dark);
@@ -27,19 +30,30 @@ a {
 .btn {
 	cursor: pointer;
 	border: none;
-
+	outline: none;
+	background-color: transparent;
+	color: inherit;
+	display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 1.2rem;
+  border: 1px solid var(--palette-accent);
+  padding: 10px 15px;
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 8px;
+  margin: 5px;
 }
 
 body {
 			margin: 0;
 			font-family: Roboto, sans-serif;
-			background-color: var(--color-background);
-			color: var(--palette-black);
+			background-color: var(--palette-dark);
+			color: var(--palette-white);
 }
 
 
 #library {
-    margin: 20px;
+    margin: 50px;
     display: grid;
 			grid-template-columns: repeat(3, 1fr);
 			grid-auto-rows: max-content;
@@ -54,7 +68,7 @@ body {
     justify-content: center;
     align-items: center;
 		
-	background: rgba(54, 25, 25, .5);
+	background: rgba(17, 17, 17, 0.5);
 }
 
 #modal.is-hidden {
@@ -62,25 +76,54 @@ body {
 
 }
 
+.btn:hover {
+	background-color: var(--palette-accent);
+	color: var(--palette-dark);
+	border-radius: 8px;
+}
+
+h1 {
+	color: var(--palette-accent);
+}
+
 #add-book-form {
-        		background-color: #fff;
 				width: 500px;
-
-			border: 1px solid #ccc;
-        
-
-			border-radius: 8px;
-			padding: 10px;
-			padding-left: 20px;
-			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
 }
 
-.book-card {
-    		background-color: #fff;
-			border: 1px solid #ccc;
+.card {
+    		background-color: var(--palette-white);
+			color: var(--palette-dark);
 			border-radius: 8px;
 			padding: 10px;
 			padding-left: 20px;
+			border-left: 10px solid var(--palette-accent);
+
 			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.card h1, .card h2 {
+			margin-top: 0;
+			color: var(--palette-dark);
+}
+
+
+.form-group {
+				background: var(--color-lighter);
+				padding: 10px;
+				box-sizing: border-box;
+				margin-top: 10px;
+				margin-bottom: 10px;
+				font-size: 1rem;
+				border-radius: 6px;
+				border: 2px solid transparent;
+				align-items: center;
+}
+
+
+.form-group label {
+				font-size: 1rem;
+				margin-bottom: 8px;
+				color: var(--color-button-default);
 }
