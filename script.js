@@ -1,4 +1,22 @@
 
+//loading from local storage
+function loadLibrary() {
+  const storedLibrary = localStorage.getItem("myLibrary");
+  if (!storedLibrary) return;
+
+  const parsedLibrary = JSON.parse(storedLibrary);
+
+  myLibrary = parsedLibrary.map(bookData =>
+    new Book(
+      bookData.title,
+      bookData.author,
+      bookData.pages,
+      bookData.read
+    )
+  );
+}
+
+
 let myLibrary = [];
 
 const libraryContainer = document.querySelector("#library");
@@ -12,38 +30,35 @@ const modal = document.querySelector("#modal");
 
 modal.classList.add("is-hidden");
 
-function Book (title, author, pages, read, id) {
+//Book constructor
+function Book (title, author, pages, read, id = crypto.randomUUID()) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
-    this.id = crypto.randomUUID();
-
-    
-    
+    this.id = id;
 }
 
+//method to return book info
 Book.prototype.bookInfo = function() {
         return("Title: " + this.title + ", Author: " + this.author + ", Number of pages: " + this.pages + ", Read?: " + this.read)
     }
 
-
+//function to add book to library
 function addBookToLibrary (title, author, pages, read) {
     const newBook = new Book(title, author, pages, read)
     myLibrary.push(newBook);
 }
 
-
+//example books
 addBookToLibrary('The Hobbit', 'J.R.R. Tolkien', 295, 'Finished');
-
 addBookToLibrary('Cloud Atlas', 'David Mitchell', 400, 'Currently reading');
-
 addBookToLibrary('The Alchemist', 'Paolo Coelho', 400, 'Finished');
-
 addBookToLibrary('The Golden Compass', 'Philip Pullman', 400, 'Finished');
 
-console.log( myLibrary, "Books in library: " + myLibrary.length)
+//console.log( myLibrary, "Books in library: " + myLibrary.length)
 
+//rendering library to DOM
 function renderLibrary() {
   libraryContainer.innerHTML = "";
 for (let i = 0; i < myLibrary.length; i++) {
@@ -57,15 +72,10 @@ const bookCard = document.createElement("div");
 
 bookCard.classList.add("book-card");
 
-
 const bookTitle = document.createElement("h1");
 const bookAuthor = document.createElement("h2");
 const bookPageCount = document.createElement("p");
 const bookRead = document.createElement("p");
-
-
-
-
 
 bookTitle.textContent = book.title;
 bookAuthor.textContent = "by " + book.author;
@@ -100,14 +110,15 @@ bookCard.appendChild(btnReadStatus);
 bookCard.dataset.id = book.id;
 
 libraryContainer.appendChild(bookCard);
-
-
+saveLibrary();
 }
 }
 
+//initial load
+loadLibrary();
 renderLibrary();
 
-
+//detect form submit
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
@@ -120,18 +131,21 @@ form.addEventListener("submit", (event) => {
     renderLibrary();
   form.reset();
   modal.classList.add("is-hidden");
+  saveLibrary();
 
 });
 
+//detect close form button click
 btnCloseForm.addEventListener("click", () => {
   modal.classList.add("is-hidden");
 });
 
-
+//detect add book button click
 btnAddBook.addEventListener("click", () => {
   modal.classList.remove("is-hidden");
 });
 
+//detect delete button click
 libraryContainer.addEventListener("click", (event) => {
   const deleteBtn = event.target.closest(".delete-btn");
   if (!deleteBtn) return;
@@ -140,9 +154,12 @@ libraryContainer.addEventListener("click", (event) => {
   const bookId = bookCard.dataset.id;
 
   myLibrary = myLibrary.filter(book => book.id !== bookId);
+  saveLibrary();
   renderLibrary();
+  
 });
 
+//detect read status button click
 libraryContainer.addEventListener("click", (event) => {
   const readBtn = event.target.closest(".read-btn");
   if (!readBtn) return;
@@ -152,11 +169,13 @@ libraryContainer.addEventListener("click", (event) => {
   
   const book = myLibrary.find(book => book.id === bookId);
   book.toggleReadStatus();
+  saveLibrary();
   renderLibrary();
+
 });
 
+//toggle read status method
 Book.prototype.toggleReadStatus = function () {
-  // here, `this` === the book from the array
   if (this.read === "To read") {
     this.read = "Currently reading";
   } else if (this.read === "Currently reading") {
@@ -164,4 +183,10 @@ Book.prototype.toggleReadStatus = function () {
   } else {
     this.read = "To read";
   }
+  saveLibrary();
 };
+
+//saving to local storage
+function saveLibrary() {
+  localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+}
