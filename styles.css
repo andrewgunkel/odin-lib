@@ -15,7 +15,7 @@
  |_   _| |_  ___   / _ \ __| (_)_ _   | _ \_ _ ___ (_)___ __| |_ 
    | | | ' \/ -_) | (_) / _` | | ' \  |  _/ '_/ _ \| / -_) _|  _|
    |_| |_||_\___|  \___/\__,_|_|_||_| |_| |_| \___// \___\__|\__|
-                                                 |__/            ```
+                                                 |__/            
 
 Project: Library
 Link to project brief: https://www.theodinproject.com/lessons/node-path-javascript-library
