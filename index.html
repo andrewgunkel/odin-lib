@@ -1,60 +1,183 @@
-<!DOCTYPE html>
+
+<!--
+
+ _       _________ ______   _______  _______  _______          
+( \      \__   __/(  ___ \ (  ____ )(  ___  )(  ____ )|\     /|
+| (         ) (   | (   ) )| (    )|| (   ) || (    )|( \   / )
+| |         | |   | (__/ / | (____)|| (___) || (____)| \ (_) / 
+| |         | |   |  __ (  |     __)|  ___  ||     __)  \   /  
+| |         | |   | (  \ \ | (\ (   | (   ) || (\ (      ) (   
+| (____/\___) (___| )___) )| ) \ \__| )   ( || ) \ \__   | |   
+(_______/\_______/|/ \___/ |/   \__/|/     \||/   \__/   \_/   
+                                                                                                                 
+
+    -----------------------------------------------
+  _____ _           ___     _ _        ___          _        _   
+ |_   _| |_  ___   / _ \ __| (_)_ _   | _ \_ _ ___ (_)___ __| |_ 
+   | | | ' \/ -_) | (_) / _` | | ' \  |  _/ '_/ _ \| / -_) _|  _|
+   |_| |_||_\___|  \___/\__,_|_|_||_| |_| |_| \___// \___\__|\__|
+                                                 |__/            ```
+
+Project: Library
+Link to project brief: https://www.theodinproject.com/lessons/node-path-javascript-library
+Author: Andrew Gunkel
+
+---------------------------------------------
+				HTML
+--------------------------------------------- 
+-->
+    
+    <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
-    <!--<link rel="icon" type="image/svg+xml" href="images/favicon.svg"> -->
-    <title>My Library</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="styles.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+	<link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+	<title>My Library</title>
 </head>
+
 <body>
+	<div class="container">
 
-    <h1>My Library</h1>
+		<!-- 
+		---------------------------------------------
+					HEADER
+		--------------------------------------------- 
+		-->
+		<div class="header">
+			<h1>
+				<span class="material-symbols-outlined">book_4</span>
+				My Library
+			</h1>
 
-    <button class="btn" id ="btn-add-book" class="btn-add-book"><span class="material-symbols-outlined">add</span>Add New Book</button>
+			<button class="btn btn-add-book" id="btn-add-book">
+				<span class="material-symbols-outlined">add</span>
+				Add New Book
+			</button>
+		</div>
+		<!-- 
+		---------------------------------------------
+					HEADER
+		--------------------------------------------- 
+		-->
 
-    <div id="library"></div>
+
+		<!-- 
+		---------------------------------------------
+					LIBRARY
+		--------------------------------------------- 
+		-->
+		<div id="library"></div>
+		<!-- 
+		---------------------------------------------
+					LIBRARY
+		--------------------------------------------- 
+		-->
 
 
-    <div id="modal">
+		<!-- 
+		---------------------------------------------
+					MODAL
+		--------------------------------------------- 
+		-->
+		<div id="modal">
+			<div id="add-book-form" class="card">
+				<h1>
+					<span class="material-symbols-outlined">add</span>
+					Add New Book
+				</h1>
 
-<div id="add-book-form" class="card" >
-    <h1>Add New Book</h1>  
-    <button id="close-form" class="btn" type="button">
-  <span class="material-symbols-outlined">close</span>
-</button>
+				<button id="close-form" class="btn" type="button">
+					<span class="material-symbols-outlined">close</span>
+				</button>
 
-        <form id="new-book-form">
+				<form id="new-book-form">
+
+					<!-- 
+					---------------------------------------------
+								BOOK DETAILS
+					--------------------------------------------- 
+					-->
 					<div class="form-group">
-						<label for="book-title">Title </label>
+						<label for="book-title" class="form-label">Title:</label>
 						<input type="text" id="book-title" name="book-title" required placeholder="The Lord of the Rings">
 					</div>
+
 					<div class="form-group">
-						<label for="book-author">Author(s)</label>
+						<label for="book-author" class="form-label">Author:</label>
 						<input type="text" id="book-author" name="book-author" required placeholder="J.R.R. Tolkien">
 					</div>
+
 					<div class="form-group">
-						<label for="book-pages">Page Count</label>
+						<label for="book-pages" class="form-label">Page Count:</label>
 						<input type="text" id="book-pages" name="book-pages" required placeholder="523">
 					</div>
+					<!-- 
+					---------------------------------------------
+								BOOK DETAILS
+					--------------------------------------------- 
+					-->
 
-                    <div class="form-group">           
-                        <label for="book-reading">Finished</label>
-						<input type="radio" name="book-status" value="Finished">
-                        <label for="book-reading">Currently reading</label>
-						<input type="radio" name="book-status" value="Currently reading">
-                        <label for="book-toberead">To read</label>
-						<input type="radio" name="book-status" value="To read">
+
+					<!-- 
+					---------------------------------------------
+								READ STATUS
+					--------------------------------------------- 
+					-->
+					<div class="form-group">
+						<span>Status:</span>
+
+						<label class="radio-option">
+							<input type="radio" name="book-status" value="Finished">
+							Finished
+						</label>
+
+						<label class="radio-option">
+							<input type="radio" name="book-status" value="Currently reading">
+							Currently reading
+						</label>
+
+						<label class="radio-option">
+							<input type="radio" name="book-status" value="To read">
+							To read
+						</label>
 					</div>
-                    <button type="submit" class="btn btn-add-book"><span class="material-symbols-outlined">add</span> Add book</button>
-    </form>
+					<!-- 
+					---------------------------------------------
+								READ STATUS
+					--------------------------------------------- 
+					-->
 
-    </div>
-    </div>
 
-    <script src="script.js"></script>
+					<!-- 
+					---------------------------------------------
+								FORM ACTIONS
+					--------------------------------------------- 
+					-->
+					<button type="submit" class="btn btn-add-book">
+						<span class="material-symbols-outlined">add</span>
+						Add book
+					</button>
+					<!-- 
+					---------------------------------------------
+								FORM ACTIONS
+					--------------------------------------------- 
+					-->
+
+				</form>
+			</div>
+		</div>
+		<!-- 
+		---------------------------------------------
+					MODAL
+		--------------------------------------------- 
+		-->
+
+	</div>
+
+	<script src="script.js"></script>
 </body>
-
 </html>
